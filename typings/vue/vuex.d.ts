@@ -1,5 +1,5 @@
-declare namespace __Vuex {
-  /*export*/ interface ConstructorOption {
+declare namespace _Vuex {
+  export interface ConstructorOption {
     state?:any;
     mutations?:any;
     middlewares?:{
@@ -11,7 +11,7 @@ declare namespace __Vuex {
     modules?:any;
   }
 
-  /*export*/ class Store<S> {
+  export class Store<S> {
     constructor(obj:ConstructorOption);
 
     state:S;
@@ -21,9 +21,16 @@ declare namespace __Vuex {
     watch(pathOrGetter:(string | Function), cb:Function, options:any):void;
   }
 
-  /*export*/ function install(...args:any[]):any;
-}
+  export default class Vuex {
+    constructor(o:ConstructorOption);
 
-declare module 'vuex' {
-  export = __Vuex;
+    Store:Store<any>;
+    static Store:typeof Store;
+
+    install(...args:any[]):any;
+  }
+  export function install(...args:any[]):any;
+}
+declare module "vuex" {
+  export = _Vuex;
 }
