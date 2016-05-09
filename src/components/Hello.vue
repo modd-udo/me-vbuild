@@ -22,8 +22,10 @@
         this.msg = window.prompt('New Message', this.msg)
       }
     },
-    getters: {
-      counterValue: getCount
+    vuex: {
+      getters: {
+        counterValue: getCount
+      }
     }
   }
 </script>
